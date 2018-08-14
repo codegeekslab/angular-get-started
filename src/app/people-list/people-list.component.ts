@@ -8,17 +8,29 @@ import { PeopleService } from "../people.service";
   <!-- this is the new syntax for ng-repeat -->
   <ul>
     <li *ngFor="let person of people">
-     {{person.name}}
+
+      <!-- HERE: add a element with click event binding -->
+      <a href="#" (click)="selectPerson(person)">
+        {{person.name}}
+      </a>
     </li>
   </ul>
+ <app-person-details [person]="selectedPerson"></app-person-details>
   `,
   styleUrls: ['./people-list.component.scss']
 })
 export class PeopleListComponent implements OnInit {
   people: Person[] = []
+      selectedPerson: Person
+
   constructor(private _peopleService: PeopleService) {}
 
   ngOnInit() {
     this.people = this._peopleService.getAll()
+  }
+    
+     selectPerson(person) {
+    this.selectedPerson = person
+         alert("Hi "+person.name);
   }
 }
