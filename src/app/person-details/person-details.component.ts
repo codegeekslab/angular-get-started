@@ -17,10 +17,5 @@ import { Component, Input } from '@angular/core';
   styles: [],
 })
 export class PersonDetailsComponent {
-    @Input() person: Person
-    constructor() { }
-
-    ngOnInit() {
-    }
-
+  @Input() person: Person
 }
