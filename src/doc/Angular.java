@@ -8,7 +8,7 @@ TypeScript can help programmers to write object-oriented programs and have them 
 its failure to embrace the features of Object Orientation, strong type checking and compile-time error checks prevents JavaScript from succeeding at the enterprise level as a full-fledged server-side technology. TypeScript was presented to bridge this gap.
 
 What is TypeScript?
-By definition, ìTypeScript is JavaScript for application-scale development.î
+By definition, ‚ÄúTypeScript is JavaScript for application-scale development.‚Äù
 
 TypeScript is a strongly typed, object oriented, compiled language. It was designed by Anders Hejlsberg (designer of C#) at Microsoft. TypeScript is both a language and a set of tools.
 TypeScript is a typed superset of JavaScript compiled to JavaScript. In other words, TypeScript is JavaScript plus some additional features.
@@ -48,7 +48,7 @@ part 1
   2.creating a Component
   	- ng generate component --inline-template people-list This will generate a new folder people-list and will place a TypeScript and a style files within that folder
   	-new components will be prefixed with the app prefix
-  	-now weíve got a component that we can render using the <app-people-list>
+  	-now we‚Äôve got a component that we can render using the <app-people-list>
   	-*ngFor for for loop
   	-Now we can update our AppComponent to display the list of StarWars people. We only need to update the app.component.html with <app-people-list></app-people-list>
   3 Including component in module
@@ -71,7 +71,24 @@ part 1
     7.import { Component, Input } from '@angular/core' and @Input() person: Person This will mark the person property as an input to the PersonDetailsComponent and will allow other components to send a person into the component.
      How? By using Angular 2 property bindings like this:
     <app-person-details [person]="selectedPerson"></app-person-details> and we can use this tag in PeopleListComponent 
- part 4
+ part 4 Routing
+  1.create a file app.routes in app folder which we contains an array of paths and an export of appRouterModule using which other application can use this routing and by default
+  we are mapping our application to peopleListComponent using /persons in that array of paths.
+  2.import appRouterModule into app.module
+  -now url gets changed to /persons
+  3.We use the router-outlet directive, an Angular 2 Routing directive that displays the active route -replace <app-people-list></app-people-list> with <router-outlet></router-outlet>  
+  in app.component.html
+  4.untill nw we were displaying all details in the same view now we will setup view for each person
+   -We start by importing the PersonDetailsComponent and defining the new route in the app.routes.ts
+   -add a new path with id using path: 'persons/:id',Person Details route that maps the /persons/:id path to the PersonDetailsComponent 
+   -update person object usng id: number
+   - update PeopleService to return based on id
+   -create route links in our app so We will update our PeopleListComponent template to use this [routerLink] directive instead of handling the (click) -  <a [routerLink]="['/persons', person.id]">
+   -whn u hover over the links u can see the id at bottom persons/1 /2 /4
+   -Extracting Parameters From Routes ->Instead of binding a person directly to it, we are going to access the component through routing.we will use id for that.
+   -Angular 2 routing provides the ActivatedRoute service for just this purpose: getting access to route parameters.
+
+
     
     
    

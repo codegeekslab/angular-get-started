@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PeopleListComponent } from './people-list/people-list.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 
+import { appRouterModule } from './app.routes'
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
     PersonDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    appRouterModule
   ],
   providers: [PeopleService],
   bootstrap: [AppComponent]

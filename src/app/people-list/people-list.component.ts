@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Person } from '../person';
-import { PeopleService } from "../people.service";
+import { Component, OnInit } from '@angular/core'
+import { Person } from '../person'
+import { PeopleService } from '../people.service'
 
 @Component({
   selector: 'app-people-list',
@@ -8,29 +8,20 @@ import { PeopleService } from "../people.service";
   <!-- this is the new syntax for ng-repeat -->
   <ul>
     <li *ngFor="let person of people">
-
-      <!-- HERE: add a element with click event binding -->
-      <a href="#" (click)="selectPerson(person)">
+      <a [routerLink]="['/persons', person.id]">
         {{person.name}}
       </a>
     </li>
   </ul>
- <app-person-details [person]="selectedPerson"></app-person-details>
   `,
-  styleUrls: ['./people-list.component.scss']
+  styleUrls: ['./people-list.component.scss'],
 })
 export class PeopleListComponent implements OnInit {
-  people: Person[] = []
-      selectedPerson: Person
+  people: Person[]
 
-  constructor(private _peopleService: PeopleService) {}
+  constructor(private peopleService: PeopleService) {}
 
   ngOnInit() {
-    this.people = this._peopleService.getAll()
-  }
-    
-     selectPerson(person) {
-    this.selectedPerson = person
-         alert("Hi "+person.name);
+    this.people = this.peopleService.getAll()
   }
 }
