@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { PeopleListComponent } from './people-list/people-list.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
+import { MinValidatorDirective } from './min-validator.directive';
+import { MaxValidatorDirective } from './max-validator.directive';
 
 
  
@@ -14,7 +16,9 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
   declarations: [
     AppComponent,
     PeopleListComponent,
-    PersonDetailsComponent
+    PersonDetailsComponent,
+    MinValidatorDirective,
+    MaxValidatorDirective
   ],
   imports: [
     BrowserModule,
