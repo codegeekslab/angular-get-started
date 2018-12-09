@@ -87,6 +87,37 @@ part 1
    -whn u hover over the links u can see the id at bottom persons/1 /2 /4
    -Extracting Parameters From Routes ->Instead of binding a person directly to it, we are going to access the component through routing.we will use id for that.
    -Angular 2 routing provides the ActivatedRoute service for just this purpose: getting access to route parameters.
+part 5 Forms
+    a)moved html code from person-details-component.ts to a seperate html file person-details-component.html and referes that file in the same js file
+    using templateUrl.
+    b)for two way binding we use [(ngModel)]="person.name" -->  which is derived from 2 things 1.event bindings are one-directional bindings that go from the template to the underlying component and are represented in brackets (click)
+      2.property bindings are one-directional bindings that go from the component to the template and are represented in square brackets [src].
+    c)Quick review 
+      1.Interpolation- One-way data binding ,which is used to display information from component to template using {{person.name}}->flower braces.
+      2.Property bindings- One-way data binding,which is used to display information from component to template using <img [src]="person.imageUrl"> -->square Brackets.
+      3.Event bindings -One-way data bindings from the template to the component  a response to an interaction between the user and the user interface of your application. Example (click)="selectPerson(person)"-->brackets.
+    d)Inbuilt validation- #name right there inside our input element. That’s what Angular 2 calls a template local variable and it’s often used to keep DOM element related references and logic out of our component code.
+    In this case, the #name variable refers to the input element itself. 
+    e)Added Min and Max custom directives -
+    1.min and max with respective values added in person-details.comp.html with a validation div <div *ngIf=
+    2.A min-validator directive is added ng generate directive min-validator and tagged to   selector: '[min]',
+    3.In order to turn this new directive into a validator we need to implement the Validator interface which contains the validate method. This method will contain the validation logic that will compare the current value of the input with our attribute min value.
+    4.But before we can implement that logic we need to get a hold of the min value. We’ll do that taking advantage of the @Input decorator     
+    f)Added service method to save form.
+    g)What’s With NgModel and NgForm?
+    If you are a little bit like me, you are probably slightly confused with the ngModel and ngForm directives. So let’s do some recap about them:
+
+    ngModel
+    ngModel lets you track the state and validity of your inputs
+    ngModel adds css classes to your inputs based on their state, whether they have been touched, changed or whether they are valid or not.
+    Using #name="ngModel" in an input element creates a local template variable called #name and assigns the ngModel directive to it. You can then use the variable to access the ngModel directive properties like valid, pristine, touched, etc.
+    ngForm
+    Angular 2 attaches an NgForm directive to every form element.
+    The ngForm directive exposes the form.valid property that let’s you know if all controls within a given form are in a valid state.
+    ngModel and ngForm
+    Whenever you add the ngModel directive to an input Angular 2 is going to register it using that name that you provide (remember name="name") with an NgForm directive that Angular 2 automagically attaches to any form element.
+    The ngForm directive contains a collection of the controls created using the ngModel directive.
+
 
 
     

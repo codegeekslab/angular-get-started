@@ -29,6 +29,9 @@ constructor(
     let link = ['/persons']
     this.router.navigate(link)
   }
+   savePersonDetails() {
+      this.peopleService.save(this.person);
+  }
   ngOnDestroy(): void {
     this.sub.unsubscribe()
   }
